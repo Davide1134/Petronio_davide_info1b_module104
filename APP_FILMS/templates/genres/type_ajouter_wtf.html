@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Ajouter un GENRE (WTF) {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Ajouter un nouveau type
+			</p>
+			<form action="" method="POST" novalidate>
+				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
+				{{ form.hidden_tag() }}
+				<div class="form-group">
+					<p>
+						{{ form.type_wtf.label }}<br>
+						{{ form.type_wtf(size=32) }}<br>
+						{% for error in form.type_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					
+				</div>
+				{{ form.submit(class="btn btn-primary") }}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
